@@ -1,0 +1,25 @@
+{
+  "name": "booking_backend",
+  "version": "1.0.0",
+  "description": "Find your Meeting Room",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SannatKumar/book_hotels.git"
+  },
+  "keywords": [
+    "booking",
+    "node",
+    "backend",
+    "quicksearch"
+  ],
+  "author": "Raj Kumar Twari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SannatKumar/book_hotels/issues"
+  },
+  "homepage": "https://github.com/SannatKumar/book_hotels#readme"
+}
