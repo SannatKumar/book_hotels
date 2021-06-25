@@ -1,47 +1,50 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let venueSchema = new Schema({
-    name: {
-        type: String
-    }
+const hotelSchema = new Schema({
+    name: {type: String}
 }, {
-    collection: 'venues'
+    collection: 'hotel'
 })
 
-let websiteSchema = new Schema({
-    domainname: {
-        type: String
-    },
-    domain: {
-        type: String
-    }
-}, {
-    collection: 'websites'
-})
+const roomSchema = new Schema({
+    name: {type: String},
+    roomNumber: {type: Number},
+    hotel: {type: Schema.Types.ObjectId, ref: 'hotel' }
+}, {collection: 'room'})
 
-let bookingSchema = new Schema({
-    id: {
-        type: String
+const websiteSchema = new Schema({
+    domainName: { type: String},
+    domain: {type: String}
     },
-    website: {
-        type: String
-    },
-    venue:{
-        type: String
-    },
-    price:{
-        type: String
-    },
-    visibility:
     {
-        type: String
+        collection: 'website'
     }
-}, {
-    collection: 'bookingsdata'
-})
+);
+
+const hotelWebsiteSchema = new Schema({
+    hotel: { type: Schema.Types.ObjectId, ref: 'hotel', required: true},
+    website: { type: Schema.Types.ObjectId, ref: 'website', required: true},
+    isVisible: { type: Boolean, required: true},
+});
+hotelWebsiteSchema.index({hotel: 1, website: 1}, {unique: true});
+
+
+const bookingSchema = new Schema({
+    hotelWebsite: { type: Schema.Types.ObjectId, ref: 'hotelWebsite'},
+    room: {type: Schema.Types.ObjectId, ref: 'room'},
+    price: {type: String},
+    },
+    {
+        collection: 'bookingdata'
+    }
+);
+bookingSchema.index({hotelWebsite: 1, room: 1}, {unique: true});
+
 module.exports = {
-    venues: mongoose.model('venues', venueSchema),
-    websites: mongoose.model('websites', websiteSchema),
-    bookingsdata: mongoose.model('bookingsdata', bookingSchema)
+    hotel: mongoose.model('hotel', hotelSchema),
+    website: mongoose.model('website', websiteSchema),
+    bookingdata: mongoose.model('bookingdata', bookingSchema),
+    room: mongoose.model('room', roomSchema),
+    hotelWebsite: mongoose.model('hotelWebsite', hotelWebsiteSchema)
 }
