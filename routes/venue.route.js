@@ -4,11 +4,11 @@ router = express.Router();
 
 // Venue Model
 
-let venueSchema = require('../models/venuedb');
+let {venues, websites, bookingsdata} = require('../models/venuedb');
 
 // CREATE venues data
 router.route('/create-venue').post((req, res, next) => {
-    venueSchema.create(req.body, (error, data) => {
+    venues.create(req.body, (error, data) => {
       if (error) {
         return next(error)
       } else {
@@ -18,10 +18,48 @@ router.route('/create-venue').post((req, res, next) => {
     })
   });
 
-  //Read the data
+  // Create Website data
+  router.route('/create-website').post((req, res, next) => {
+    websites.create(req.body, (error, data) => {
+      if (error) {
+        return next(error)
+      } else {
+        console.log(data)
+        res.json(data)
+      }
+    })
+  });
+
+   // Create booking data
+   router.route('/create-booking').post((req, res, next) => {
+    bookingsdata.create(req.body, (error, data) => {
+      if (error) {
+        return next(error)
+      } else {
+        console.log(data)
+        res.json(data)
+      }
+    })
+  });
+
+  //Read the booking data
+
+  router.route('/show-booking').get((req, res) => {
+    bookingsdata.find((error, data)=> {
+      if(error){
+        return next(error)
+      }
+      else{
+        return res.json(data);
+      }
+    }) 
+  })
+
+
+//Read the venue data
 
 router.route('/').get((req, res) =>{
-    venueSchema.find((error, data) => {
+    venues.find((error, data) => {
         if(error) {
             return next(error)
         }else {
@@ -30,5 +68,19 @@ router.route('/').get((req, res) =>{
     })
 })
 
+//Read the website data
+
+// router.route('/website').get((req, res) =>{
+//     websites.find((error, data) => {
+//         if(error) {
+//             return next(error)
+//         }else {
+//             res.json(data)
+//         }
+//     })
+// })
+
 
 module.exports = router;
+
+    
