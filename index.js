@@ -16,7 +16,8 @@ const venueRoute = require('../booking_backend/routes/venue.route.js')
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(() => {
     console.log('Database successfully connected!');
 },
@@ -35,7 +36,7 @@ app.use(express.urlencoded({
 
 
 app.use(cors());
-app.use('/venues', venueRoute);
+app.use('/api', venueRoute);
 
 // server port definition
 const port = process.env.PORT || 4000;
