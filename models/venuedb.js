@@ -1,50 +1,43 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const hotelSchema = new Schema({
+//Schema for storing venue names
+const venueSchema = new Schema({
     name: {type: String}
-}, {
-    collection: 'hotel'
-})
+}, {collection: 'venue'})
 
-const roomSchema = new Schema({
+//Schema for Meeting Room to store name & hotel(referenced to ) 
+const meetingRoomSchema = new Schema({
     name: {type: String},
-    roomNumber: {type: Number},
-    hotel: {type: Schema.Types.ObjectId, ref: 'hotel' }
-}, {collection: 'room'})
+    venue: {type: Schema.Types.ObjectId, ref: 'venue' }
+}, {collection: 'meetingRoom'});
 
+//Schema for storing websites
 const websiteSchema = new Schema({
-    domainName: { type: String},
-    domain: {type: String}
-    },
-    {
-        collection: 'website'
-    }
-);
+    websiteName: {type: String}
+    },{collection: 'website'});
 
-const hotelWebsiteSchema = new Schema({
-    hotel: { type: Schema.Types.ObjectId, ref: 'hotel', required: true},
+//Schema for storing venue, website and visibility
+const venueWebsiteSchema = new Schema({
+    venue: { type: Schema.Types.ObjectId, ref: 'venue', required: true},
     website: { type: Schema.Types.ObjectId, ref: 'website', required: true},
     isVisible: { type: Boolean, required: true},
-});
-hotelWebsiteSchema.index({hotel: 1, website: 1}, {unique: true});
+},{collection: 'venueWebsite'});
+venueWebsiteSchema.index({venue: 1, website: 1}, {unique: true});
 
-
+//Booking Schema for venueWebsite, room and price for the room
 const bookingSchema = new Schema({
-    hotelWebsite: { type: Schema.Types.ObjectId, ref: 'hotelWebsite'},
-    room: {type: Schema.Types.ObjectId, ref: 'room'},
+    venueWebsite: { type: Schema.Types.ObjectId, ref: 'venueWebsite'},
+    room: {type: Schema.Types.ObjectId, ref: 'meetingRoom'},
     price: {type: String},
-    },
-    {
-        collection: 'bookingdata'
-    }
-);
-bookingSchema.index({hotelWebsite: 1, room: 1}, {unique: true});
+    },{collection: 'bookingData'});
+bookingSchema.index({venueWebsite: 1, room: 1}, {unique: true});
 
+//Export all the collection via mongoose.model
 module.exports = {
-    hotel: mongoose.model('hotel', hotelSchema),
+    venue: mongoose.model('venue', venueSchema),
+    room: mongoose.model('meetingRoom', meetingRoomSchema),
     website: mongoose.model('website', websiteSchema),
-    bookingdata: mongoose.model('bookingdata', bookingSchema),
-    room: mongoose.model('room', roomSchema),
-    hotelWebsite: mongoose.model('hotelWebsite', hotelWebsiteSchema)
+    venueWebsite: mongoose.model('venueWebsite', venueWebsiteSchema),
+    bookingData: mongoose.model('bookingData', bookingSchema)
 }
