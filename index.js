@@ -41,7 +41,7 @@ app.use('/api', venueRoute);
 // server port definition
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
-    console.log('Connected to port' + port)
+    console.log('Connected to port ' + port)
 })
 
 // 404 Error
