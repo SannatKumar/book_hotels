@@ -1,6 +1,93 @@
 # Description
 
-This is a node backend for booking meeting rooms from different venues. 
+This is a node backend api for booking meeting rooms from different venues.
+
+# How it works?
+
+Environment: 
+
+node and npm needs to be installed in the machine.
+
+Download the application folder. Go to the folder where the package.json file is located. Package.json file has all the dependencies and scripts necessary for the project.
+
+In this folder insert the following command.
+
+**Note: Actual command starts after the dollar sign.**
+
+$ npm install
+
+This installs the necessary dependencies for the project.
+
+Next,
+
+To load the dummy Data, Insert the following command in the terminal(same folder where package.json resides).
+
+$ node ./dump/venue.dbdata.js
+
+Next,
+
+Open a terminal and insert the command.
+
+$ mongod
+
+This starts the database server.
+Keep this running and open another terminal and insert the folowing command.
+
+$npm start
+
+This starts the application and Now we can try testing the api with Postman.
+
+"venue_api.postman_collection" is the collection of request used to test the design APIs. 
+
+There are 11 APIs and 10 of them are to create(Post Method) and retrieve(Get Method) the data into the collections.
+
+Below are the list of 10 APIs are mainly for the development purposes.
+
+1) POST localhost:4000/api/create-venue
+To post venue names.
+
+2) GET localhost:4000/api/show-venue
+To get the list of venue in the database.
+
+3) POST localhost:4000/api/create-meeting-room
+To post meeting rooms.
+
+4) GET localhost:4000/api/show-meeting-room
+To view the list of meeting rooms.
+
+5) POST localhost:4000/api/create-website
+To create the website list.
+
+6) GET localhost:4000/api/show-website-data
+To show the website list from the database.
+
+7) POST localhost:4000/api/create-venue-website
+To create the venue & website. linking visibility between venue and website.
+
+8) GET localhost:4000/api/show-venue-website-data
+To show the venue & website. linking visibility between venue and website.
+
+9) POST localhost:4000/api/create-booking-data
+To create the booking data.
+
+10) GET localhost:4000/api/show-booking-data
+To View the booking data. This shows all the details along with visibility and price rates.
+
+Next,
+This is the main API for the task.
+
+Task API: GET 
+localhost:4000/api/website/:id
+
+The id is replaced by the id of the website just like below.
+
+localhost:4000/api/website/60d864804f947b43ec223b17
+
+It shows the data related to the website and hourly price rate.
+
+# Note dbDescription.md has the database explanation.
+
+
 
 # Process of development
 
@@ -47,5 +134,9 @@ Nodemon(Used for hot reloading in smple words.): Nodemon is a tool that helps de
 Http-errors: HTTP-errors module is used for generating errors for Node.js applications.
 
 bodyParser: This package extracts the entire body portion of an incoming request stream and exposes it on req.body.
+
+# Testing of APIs
+
+Postman: Postman is an API client that makes it easy for developers to create, share, test and document APIs.
 
 
