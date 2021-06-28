@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "12c6e709-be02-4576-a345-2f7fd3fb1f35",
+		"name": "venue_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_venue_data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Yak & Yeti\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/create-venue",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"create-venue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show-venue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/show-venue",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"show-venue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show-meeting-rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/show-meeting-room",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"show-meeting-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Yeti\",\r\n    \"venue\": \"60d84cba28f4f025d8fb78b2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/create-meeting-room",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"create-meeting-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-website",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"WWW.BookHotel.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/create-website",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"create-website"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show-website-data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/show-website-data",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"show-website-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-venue-website",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"venue\": \"60d84cba28f4f025d8fb78b2\",\r\n    \"website\": \"60d8648e4f947b43ec223b19\",\r\n    \"isVisible\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/create-venue-website",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"create-venue-website"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show-venue-website-data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/show-venue-website-data",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"show-venue-website-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-booking-data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"venueWebsite\": \"60d868693a05570ed079fa58\",\r\n    \"room\": \"60d8615a33d1300bd8210f50\",\r\n    \"price\": \"80\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/create-booking-data",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"create-booking-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show-booking-data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/show-booking-data",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"show-booking-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show-individual-website-data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
