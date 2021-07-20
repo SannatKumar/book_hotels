@@ -1,6 +1,6 @@
-let mongoose = require('mongoose');
-let dbConfig = require('../database/db');
-let {venue, room, website, venueWebsite, bookingData} = require('../models/venuedb');
+const mongoose = require('mongoose');
+const dbConfig = require('../database/db');
+const {venue, room, website, venueWebsite, bookingData} = require('../models/venuedb');
 
 //create venueDumpData
 const venueDump = [

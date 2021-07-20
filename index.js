@@ -1,8 +1,8 @@
-let express = require('express');
-let mongoose = require('mongoose');
-let cors = require('cors');
-let bodyParser = require('body-parser');
-let dbConfig = require('./database/db');
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const dbConfig = require('./database/db');
 
 // Error define
 const createError = require('http-errors');

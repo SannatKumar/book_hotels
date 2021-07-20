@@ -1,10 +1,10 @@
-let mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
 express = require('express'),
 router = express.Router();
 
 // Venue Model
 
-let {venue, room, website, venueWebsite, bookingData} = require('../models/venuedb');
+const {venue, room, website, venueWebsite, bookingData} = require('../models/venuedb');
 
 
 
@@ -151,10 +151,11 @@ router.route('/website/:id').get(async (req, res) => {
   const websiteId = req.params.id;
   try{
     const visibleVenueWebsite = await venueWebsite.findOne({"website": {_id: websiteId}, isVisible: true});
+    console.log("This is Visible", res.json(visibleVenueWebsite));
     const bookingdataInstance = await bookingData.find(
           {"venueWebsite": {_id: visibleVenueWebsite._id}});
-          console.log("Booking Data Display", bookingdataInstance);
-        return res.json(bookingdataInstance)  
+          console.log("Booking Data Display", bookingdataInstance); 
+        return res.json(bookingdataInstance); 
   }
   catch(error)
   {
